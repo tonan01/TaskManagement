@@ -45,5 +45,12 @@ namespace TaskManagement.API.Controllers
             await _mediator.Send(command);
             return NoContent();
         }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteTask(int id)
+        {
+            await _mediator.Send(new DeleteTaskCommand { Id = id });
+            return NoContent();
+        }
     }
 }
