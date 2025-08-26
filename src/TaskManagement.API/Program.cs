@@ -19,20 +19,17 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 builder.Services.AddScoped<ITaskRepository, TaskRepository>();
 builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 
-#region Library 
 // Add AutoMapper
 builder.Services.AddAutoMapper(typeof(MappingProfile));
 
 // Add MediatR
-builder.Services.AddMediatR(cfg =>
-{
+builder.Services.AddMediatR(cfg => {
     cfg.RegisterServicesFromAssembly(typeof(TaskManagement.Application.Features.Tasks.Queries.GetAllTasksQuery).Assembly);
 });
 
 // Add FluentValidation
 builder.Services.AddFluentValidationAutoValidation();
-builder.Services.AddValidatorsFromAssembly(typeof(CreateTaskCommandValidator).Assembly); 
-#endregion
+builder.Services.AddValidatorsFromAssembly(typeof(CreateTaskCommandValidator).Assembly);
 
 // Add CORS
 builder.Services.AddCors(options =>
@@ -56,9 +53,9 @@ if (app.Environment.IsDevelopment())
 {
    
 }
-
 app.UseSwagger();
 app.UseSwaggerUI();
+
 
 app.UseHttpsRedirection();
 app.UseCors("AllowAngular");

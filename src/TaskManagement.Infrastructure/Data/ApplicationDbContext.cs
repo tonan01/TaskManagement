@@ -14,7 +14,6 @@ namespace TaskManagement.Infrastructure.Data
         {
         }
 
-        // DbSets for your entities
         public DbSet<TaskItem> Tasks { get; set; }
         public DbSet<Category> Categories { get; set; }
 
@@ -40,11 +39,11 @@ namespace TaskManagement.Infrastructure.Data
                 entity.Property(e => e.Color).HasMaxLength(7);
             });
 
-            // Seed data
+            // Seed data - CORRECT (static values)
             modelBuilder.Entity<Category>().HasData(
-                new Category { Id = 1, Name = "Work", Color = "#007bff", CreatedAt = DateTime.UtcNow },
-                new Category { Id = 2, Name = "Personal", Color = "#28a745", CreatedAt = DateTime.UtcNow },
-                new Category { Id = 3, Name = "Shopping", Color = "#ffc107", CreatedAt = DateTime.UtcNow }
+                new Category { Id = 1, Name = "Work", Color = "#007bff", CreatedAt = new DateTime(2024, 1, 1) },
+                new Category { Id = 2, Name = "Personal", Color = "#28a745", CreatedAt = new DateTime(2024, 1, 1) },
+                new Category { Id = 3, Name = "Shopping", Color = "#ffc107", CreatedAt = new DateTime(2024, 1, 1) }
             );
         }
     }
