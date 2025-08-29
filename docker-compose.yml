@@ -1,4 +1,4 @@
-version: '3.8'
+version: "3.9"
 
 services:
   sqlserver:
@@ -11,7 +11,7 @@ services:
     volumes:
       - sqlserver_data:/var/opt/mssql
 
-  taskmanagement-api:
+  taskmanagement.api:
     build:
       context: .
       dockerfile: src/TaskManagement.API/Dockerfile
